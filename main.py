@@ -9,33 +9,37 @@ from discord.utils import get
 client = commands.Bot(command_prefix='e!')
 
 mainshop = [{
-    "name": "tavern-Table",
+    "name": "Tavern-Table",
     "price": 25,
     "description": "A table at the tavern, for 3 days!"
 }, {
-    "name": "bank-security",
+    "name": "Bank-Security",
     "price": 100,
     "description": "10 more security points!"
 }, {
-    "name": "toast",
+    "name": "Toast",
     "price": 3,
     "description": "Some freshly baked toast"
 }, {
-    "name": "beer",
+    "name": "Beer",
     "price": 2,
     "description": "Tasty beer for you to enjoy"
 }, {
-    "name": "apartment-room",
+    "name": "Apartment-Room",
     "price": 150,
     "description": "A place where you can live"
 }, {
-    "name": "huge-mansion",
+    "name": "Huge-Mansion",
     "price": 500,
     "description": "Gives your house a place in this town"
 }, {
-    "name": "something you can't buy",
+    "name": "Something You Can't Buy",
     "price": 0,
     "description": "Try to buy this"  
+}, {
+    "name": "Secretly Made Jam",
+    "price": 1,
+    "description": "Freshly baked toast pairs really good with jam!"
 }]
 
 
@@ -73,7 +77,7 @@ async def sec(ctx):
     sec = round(users[str(user.id)]["sec"])
     print(sec)
 
-    await ctx.send(f"You have {sec} security points")
+    await ctx.send(f"You have {sec} security points now!")
     
 
 @client.command()
@@ -147,10 +151,10 @@ async def withdraw(ctx, amount=None):
     amount = round(int(amount))
 
     if amount > bal[1]:
-        await ctx.send("You don't have that much money!")
+        await ctx.send("You don't have that much money! Earn more!")
         return
     if amount < 0:
-        await ctx.send("Amount must be positive")
+        await ctx.send("Amount must be positive!")
         return
 
     await update_bank(ctx.author, amount)
